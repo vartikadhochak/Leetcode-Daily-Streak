@@ -1,16 +1,23 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
 
-        //edge case
-        if(nums.length==0){
-            return 0;
-        }
-        int i=0; //store unique element
-        for(int j=1;j<nums.length;j++){
-            if(nums[j]!=nums[i]){
-                i++;
-                nums[i]=nums[j];
+        if (nums.length == 0) return 0;
+
+        int officer = 1; // write index
+        int cm = 1;      // scan index
+        int k = 1;       // count of unique elements
+
+        while (cm < nums.length) {
+
+            if (nums[cm] != nums[cm - 1]) {
+                nums[officer] = nums[cm];
+                officer++;
+                k++;
             }
-        }return i+1;
+
+            cm++;
+        }
+
+        return k;
     }
 }
